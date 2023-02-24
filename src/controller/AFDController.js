@@ -4,10 +4,12 @@ module.exports = {
     async afdFunction(req, res) {
         try{
             const afnd = `se
-toma
+entao
 senao
 <S> ::= a<A> | e<A> | i<A> | o<A> | u<A>
 <A> ::= a<A> | e<A> | i<A> | o<A> | u<A> | ε`
+
+            //console.log(afnd);
 
             var bnfs = [];
             var normalTokens = [];
@@ -77,6 +79,23 @@ senao
                 holdAuxBnf[count] = aux;
             });
 
+            holdAux.map((conj)=>{
+                holdAuxBnf.map((agreg)=>{
+                    conj.map((gramar)=>{
+                        agreg.map((gramatic)=>{
+                            var simbol = gramar.match(/[a-z]/g);
+                            if(simbol){
+                                if(gramar.indexOf(simbol[0]) !== -1 && gramatic.indexOf(simbol[0]) !== -1){
+                                    console.log(gramar);
+                                    console.log(gramatic);
+                                }
+                            }
+                        })
+                    })
+                })
+            })
+
+/*
             holdAux.map((answer, pos)=>{
                 holdAuxBnf.map((asw)=>{
                     finalAnswer[pos+1] = asw[asw.length-1] + ' => variavel' ;
@@ -86,7 +105,7 @@ senao
                 finalAnswer[pos] = getAsw;
 
             })
-
+*/
 
 
 

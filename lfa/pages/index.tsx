@@ -81,7 +81,7 @@ const convertToDFA = (arr: Item[]) => {
   // Encontra o estado inicial do AFD, que é o conjunto dos estados iniciais do AFND.
   const initialState = Array.from(new Set(newArr.filter(item => item.estado === 'S').map(item => item.origem)));
 
-  const dfaTable: DFAItem[] = [{ state: initialState.join(''), transitions: {} }];
+  const dfaTable: DFAItem[] = [{ state: 'S', transitions: {} }];
   const visitedStates: Record<string, boolean> = { [dfaTable[0].state]: true };
   const symbols = Array.from(new Set(newArr.map(item => item.simbol)));
 
@@ -110,8 +110,6 @@ const convertToDFA = (arr: Item[]) => {
       currentState.transitions[symbol] = nextState;
     }
   }
-
-  console.log(dfaTable);
 
   return (
     <Table sx={{ display: 'table', marginLeft: '20%', maxWidth: '1024px' }}>
